@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coolibah - For Support Workers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #4a4a4a;
+            background: #fafaf9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header/Nav */
+        header {
+            padding: 24px 0;
+            background: #fafaf9;
+            border-bottom: 1px solid #ebe9e6;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #2c2c2c;
+            text-decoration: none;
+            font-family: 'Tiempos Text', Georgia, 'Times New Roman', serif;
+            letter-spacing: -0.01em;
+            display: inline-flex;
+            align-items: center;
+            gap: 0px;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 24px 120px;
+            text-align: center;
+            background: linear-gradient(135deg, #f5f1ed 0%, #ede7e0 100%);
+            color: #2c2c2c;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(235, 225, 215, 0.3) 0%, rgba(245, 235, 225, 0.3) 100%);
+            opacity: 0.5;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            color: #2c2c2c;
+            letter-spacing: -0.02em;
+        }
+
+        .hero .highlight {
+            background: linear-gradient(135deg, #6ba854 0%, #5a9547 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 48px;
+            color: #5a5a5a;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #6ba854;
+            color: white;
+            padding: 16px 32px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 12px rgba(168, 198, 159, 0.3);
+        }
+
+        .cta-button:hover {
+            background: #5a9547;
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(168, 198, 159, 0.4);
+        }
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 100px 24px;
+            background: #fafaf9;
+            position: relative;
+        }
+
+        .benefits h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: #2c2c2c;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .benefits .subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #6a6a6a;
+            margin-bottom: 60px;
+        }
+
+        .benefit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            background: #f5f3f0;
+            padding: 40px 32px;
+            border-radius: 16px;
+            border: 1px solid #e8e5e1;
+            color: #2c2c2c;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .benefit-item:hover {
+            background: #ffffff;
+            border-color: #d4cfc8;
+        }
+
+        .benefit-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 20px;
+            display: block;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            color: #2c2c2c;
+            font-weight: 600;
+        }
+
+        .benefit-item p {
+            color: #6a6a6a;
+            line-height: 1.7;
+            font-size: 1rem;
+        }
+
+        /* Final CTA Section */
+        .final-cta {
+            background: linear-gradient(135deg, #f5f1ed 0%, #ede7e0 100%);
+            padding: 100px 24px;
+            text-align: center;
+            position: relative;
+        }
+
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: #2c2c2c;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+        }
+
+        .final-cta p {
+            font-size: 1.1rem;
+            color: #5a5a5a;
+            margin-bottom: 40px;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        #email {
+            padding: 16px 20px;
+            font-size: 1rem;
+            border: 1px solid #d4cfc8;
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            margin-bottom: 16px;
+            transition: all 0.2s;
+        }
+
+        #email:focus {
+            outline: none;
+            border-color: #6ba854;
+            background: white;
+        }
+
+        #thankYouMessage {
+            background: white;
+            padding: 48px 32px;
+            border-radius: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        #thankYouMessage h3 {
+            font-size: 1.75rem;
+            margin-bottom: 16px;
+            color: #2c2c2c;
+        }
+
+        #thankYouMessage p {
+            font-size: 1.1rem;
+            color: #6a6a6a;
+        }
+
+        /* Footer */
+        footer {
+            background: #fafaf9;
+            border-top: 1px solid #ebe9e6;
+            color: #8a8a8a;
+            padding: 40px 24px;
+            text-align: center;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1.05rem;
+            }
+
+            .benefits h2,
+            .how-it-works h2,
+            .final-cta h2 {
+                font-size: 1.875rem;
+            }
+
+            .benefit-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                gap: 16px;
+            }
+
+            .step-number {
+                width: 48px;
+                height: 48px;
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <img src="coolibah-logo.png" alt="Coolibah" class="logo-icon">
+                Coolibah
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Get the hours, pay and matches suited to you. <span class="highlight">Find work that fits.</span></h1>
+            <p>The professional network for workers in the care industry. Build your profile, connect with participants and grow your support hours.</p>
+            <button class="cta-button" onclick="scrollToForm()">Register Now</button>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2>Why join Coolibah?</h2>
+            <p class="subtitle">More opportunities. Better matches. Free for workers.</p>
+            <div class="benefit-grid">
+                <div class="benefit-item">
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Profile card icon -->
+                        <rect x="3" y="5" width="18" height="15" rx="2" stroke="#6ba854" stroke-width="1.5"/>
+                        <circle cx="12" cy="10" r="2.5" stroke="#6ba854" stroke-width="1.5"/>
+                        <path d="M8 16c0-2 1.5-3 4-3s4 1 4 3" stroke="#6ba854" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="3" y1="20" x2="21" y2="20" stroke="#6ba854" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <h3>Build Your Professional Profile</h3>
+                    <p>Create a complete profile showcasing your experience, skills, certifications, and what makes you unique as a carer. Share your availability, preferences, and approach to support work. Let participants discover the real you.</p>
+                </div>
+                <div class="benefit-item">
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Connection network - center person connected to others -->
+                        <circle cx="12" cy="12" r="3" fill="#6ba854"/>
+                        <circle cx="5" cy="7" r="2" fill="#6ba854"/>
+                        <circle cx="19" cy="7" r="2" fill="#6ba854"/>
+                        <circle cx="5" cy="17" r="2" fill="#6ba854"/>
+                        <circle cx="19" cy="17" r="2" fill="#6ba854"/>
+                        <line x1="9.5" y1="11" x2="6.5" y2="8.5" stroke="#6ba854" stroke-width="1.5"/>
+                        <line x1="14.5" y1="11" x2="17.5" y2="8.5" stroke="#6ba854" stroke-width="1.5"/>
+                        <line x1="9.5" y1="13" x2="6.5" y2="15.5" stroke="#6ba854" stroke-width="1.5"/>
+                        <line x1="14.5" y1="13" x2="17.5" y2="15.5" stroke="#6ba854" stroke-width="1.5"/>
+                    </svg>
+                    <h3>Connect Directly with Participants</h3>
+                    <p>Get discovered by NDIS and Aged Care participants looking for carers like you. Build trusted relationships without agencies in the middle. Work on your terms - as a sole trader or with a provider.</p>
+                </div>
+                <div class="benefit-item">
+                    <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <!-- Growth/upward trend chart -->
+                        <path d="M3 20L8 14L13 17L21 7" stroke="#6ba854" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M21 7L21 12M21 7L16 7" stroke="#6ba854" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="8" cy="14" r="2" fill="#6ba854"/>
+                        <circle cx="13" cy="17" r="2" fill="#6ba854"/>
+                        <circle cx="21" cy="7" r="2" fill="#6ba854"/>
+                    </svg>
+                    <h3>Grow Your Support Work</h3>
+                    <p>Get the consistent hours you need with participants who value you. No commission fees eating into your pay. Coolibah is free to use for carers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta" id="waitlist">
+        <div class="container">
+            <h2>Want consistent hours with well-matched participants?</h2>
+            <p>Be the first to know when we launch.</p>
+            <div class="form-container">
+                <!-- Step 1: Email only -->
+                <form id="step1Form" onsubmit="handleStep1(event)">
+                    <input type="email" id="email" name="email" placeholder="Your email" required style="margin-bottom: 16px;">
+                    <button type="submit" class="cta-button">Continue</button>
+                </form>
+
+                <!-- Step 2: Additional info -->
+                <form id="step2Form" onsubmit="handleStep2(event)" style="display: none;">
+                    <div style="margin-bottom: 20px;">
+                        <input type="text" id="name" name="name" placeholder="Your first name (optional)" style="width: 100%; padding: 16px; border: 1px solid #e8e5e1; border-radius: 12px; font-size: 1rem; margin-bottom: 16px; background: white;">
+                        <input type="text" id="location" name="location" placeholder="Your location (e.g., Melbourne, Sydney)" style="width: 100%; padding: 16px; border: 1px solid #e8e5e1; border-radius: 12px; font-size: 1rem; background: white;">
+                    </div>
+                    
+                    <div style="margin: 20px 0; text-align: left; background: white; padding: 20px; border-radius: 12px; border: 1px solid #e8e5e1;">
+                        <label style="display: block; margin-bottom: 12px; font-weight: 500; color: #2c2c2c; font-size: 0.95rem;">Are you currently a support worker?</label>
+                        <label style="display: block; margin-bottom: 10px; color: #5a5a5a; cursor: pointer;">
+                            <input type="radio" name="is_worker" value="yes" required style="margin-right: 8px;">
+                            Yes
+                        </label>
+                        <label style="display: block; color: #5a5a5a; cursor: pointer;">
+                            <input type="radio" name="is_worker" value="no" required style="margin-right: 8px;">
+                            No
+                        </label>
+                    </div>
+
+                    <div style="margin: 20px 0; text-align: left; background: white; padding: 20px; border-radius: 12px; border: 1px solid #e8e5e1;">
+                        <label style="display: block; margin-bottom: 16px; font-weight: 500; color: #2c2c2c; font-size: 0.95rem;">What interests you most about Coolibah? (Select all that apply)</label>
+                        <label style="display: block; margin-bottom: 12px; color: #5a5a5a; line-height: 1.5; cursor: pointer;">
+                            <input type="checkbox" name="interests" value="direct_work" style="margin-right: 8px;">
+                            Working directly with participants
+                        </label>
+                        <label style="display: block; margin-bottom: 12px; color: #5a5a5a; line-height: 1.5; cursor: pointer;">
+                            <input type="checkbox" name="interests" value="matching" style="margin-right: 8px;">
+                            Finding participants that match my skills and preferences
+                        </label>
+                        <label style="display: block; margin-bottom: 12px; color: #5a5a5a; line-height: 1.5; cursor: pointer;">
+                            <input type="checkbox" name="interests" value="hours" style="margin-right: 8px;">
+                            Getting the hours of work you need
+                        </label>
+                        <label style="display: block; margin-bottom: 12px; color: #5a5a5a; line-height: 1.5; cursor: pointer;">
+                            <input type="checkbox" name="interests" value="flexibility" style="margin-right: 8px;">
+                            Flexibility to work as a sole trader or with a provider
+                        </label>
+                        <label style="display: block; margin-bottom: 12px; color: #5a5a5a; line-height: 1.5; cursor: pointer;">
+                            <input type="checkbox" name="interests" value="profile" style="margin-right: 8px;">
+                            Showcasing and sharing your profile
+                        </label>
+                        <label style="display: block; margin-bottom: 12px; color: #5a5a5a; line-height: 1.5; cursor: pointer;">
+                            <input type="checkbox" name="interests" value="other" style="margin-right: 8px;" id="other-checkbox">
+                            Other:
+                        </label>
+                        <input type="text" id="other-text" name="other_text" placeholder="Please specify..." style="margin-left: 24px; width: calc(100% - 24px); padding: 12px; border: 1px solid #e8e5e1; border-radius: 8px; font-size: 0.95rem;">
+                    </div>
+
+                    <div style="margin: 20px 0; text-align: left; background: white; padding: 20px; border-radius: 12px; border: 1px solid #e8e5e1;">
+                        <label style="display: block; margin-bottom: 12px; font-weight: 500; color: #2c2c2c; font-size: 0.95rem;">How did you hear about us?</label>
+                        <select name="source" style="width: 100%; padding: 12px; border: 1px solid #e8e5e1; border-radius: 8px; font-size: 0.95rem; background: white; color: #5a5a5a;">
+                            <option value="">Select an option</option>
+                            <option value="social_media">Social media</option>
+                            <option value="friend">Friend or colleague</option>
+                            <option value="search">Search engine</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="cta-button">Register Now</button>
+                </form>
+
+                <!-- Thank you / Confirmation -->
+                <div id="thankYouMessage" style="display: none;">
+                    <div style="background: white; padding: 40px; border-radius: 16px; border: 1px solid #e8e5e1; text-align: center;">
+                        <div style="font-size: 4rem; margin-bottom: 16px;">🎉</div>
+                        <h3 style="color: #2c2c2c; font-size: 1.75rem; margin-bottom: 16px; font-weight: 600;">You're on the list!</h3>
+                        <p style="color: #5a5a5a; font-size: 1.1rem; line-height: 1.6; margin-bottom: 24px;">Thank you for registering! We'll email you when Coolibah launches.</p>
+                        <p style="color: #6a6a6a; font-size: 0.95rem;">Keep an eye on your inbox - we can't wait to connect you with participants who are looking for someone just like you.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Coolibah. The professional network for workers in the care industry.</p>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToForm() {
+            document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                document.getElementById('email').focus();
+            }, 500);
+        }
+
+        let formData = {};
+
+        function handleStep1(event) {
+            event.preventDefault();
+            
+            // Save email
+            formData.email = document.getElementById('email').value;
+            formData.timestamp = new Date().toISOString();
+            
+            // Hide step 1, show step 2
+            document.getElementById('step1Form').style.display = 'none';
+            document.getElementById('step2Form').style.display = 'block';
+        }
+
+        async function handleStep2(event) {
+            event.preventDefault();
+            
+            // Collect all additional form data
+            formData.name = document.getElementById('name').value;
+            formData.location = document.getElementById('location').value;
+            formData.is_worker = document.querySelector('input[name="is_worker"]:checked')?.value;
+            formData.interests = Array.from(document.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value);
+            formData.other_text = document.getElementById('other-text').value;
+            formData.source = document.querySelector('select[name="source"]').value;
+            
+            console.log('Submitting form data:', formData);
+            
+            try {
+                // Send data to Google Apps Script
+                const response = await fetch('https://script.google.com/macros/s/AKfycbyHyy9px6kKQzl61F59u5JW-LbnnoiQoEGoUaTzN5eavAE6-zQceRvGBSjemrvkdTPh/exec', {
+                    method: 'POST',
+                    mode: 'no-cors', // Required for Google Apps Script
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                console.log('Form submitted successfully');
+                
+                // Show confirmation
+                document.getElementById('step2Form').style.display = 'none';
+                document.getElementById('thankYouMessage').style.display = 'block';
+                
+            } catch (error) {
+                console.error('Error submitting form:', error);
+                // Still show thank you message even if there's an error (because of no-cors mode)
+                document.getElementById('step2Form').style.display = 'none';
+                document.getElementById('thankYouMessage').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
