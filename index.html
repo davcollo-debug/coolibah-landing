@@ -106,7 +106,7 @@
             color: white;
             padding: 16px 32px;
             font-size: 1rem;
-            font-weight: 500;
+            font-weight: 600;
             text-decoration: none;
             border-radius: 12px;
             transition: all 0.2s ease;
@@ -117,21 +117,8 @@
 
         .cta-button:hover {
             background: #5a9547;
-            transform: translateY(-1px);
-            box-shadow: 0 6px 16px rgba(168, 198, 159, 0.4);
-        }
-            font-weight: 600;
-            text-decoration: none;
-            border-radius: 12px;
-            transition: all 0.2s ease;
-            cursor: pointer;
-            border: none;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-        }
-
-        .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(168, 198, 159, 0.4);
         }
 
         /* Benefits Section */
@@ -319,9 +306,9 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Get the hours, pay and matches suited to you. <span class="highlight">Find work that fits.</span></h1>
-            <p>The professional network for support workers. Build your profile, connect with participants and grow your support hours.</p>
-            <button class="cta-button" onclick="scrollToForm()">Register Now</button>
+            <h1>Get participant matches <span class="highlight">suited to you.</span></h1>
+            <p>Gain regular hours of work by being matched to NDIS &amp; Home Care Package participants who are looking for someone just like you.</p>
+            <button class="cta-button" onclick="scrollToForm()">Join</button>
         </div>
     </section>
 
@@ -329,7 +316,7 @@
     <section class="benefits">
         <div class="container">
             <h2>Why join Coolibah?</h2>
-            <p class="subtitle">More opportunities. Better matches. For support workers.</p>
+            <p class="subtitle">Imagine having your own digital marketing company to grow your business!</p>
             <div class="benefit-grid">
                 <div class="benefit-item">
                     <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -339,8 +326,8 @@
                         <path d="M8 16c0-2 1.5-3 4-3s4 1 4 3" stroke="#6ba854" stroke-width="1.5" stroke-linecap="round"/>
                         <line x1="3" y1="20" x2="21" y2="20" stroke="#6ba854" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
-                    <h3>Build Your Professional Profile</h3>
-                    <p>Create a complete profile showcasing your experience, skills, certifications, and what makes you unique as a support worker. Share your availability, preferences, and approach to support work. Let participants discover the real you.</p>
+                    <h3>Showcase Your Authentic Self</h3>
+                    <p>Put your best self forward with a profile that showcases your experience, skills, certifications, and what makes you unique as a support worker. Share your availability, preferences, and approach to support work. Let participants discover the real you.</p>
                 </div>
                 <div class="benefit-item">
                     <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -356,7 +343,7 @@
                         <line x1="14.5" y1="13" x2="17.5" y2="15.5" stroke="#6ba854" stroke-width="1.5"/>
                     </svg>
                     <h3>Connect Directly with Participants</h3>
-                    <p>Get discovered by NDIS and Aged Care participants looking for support workers like you. Build trusted relationships without agencies in the middle. Work on your terms - as a sole trader or with a provider.</p>
+                    <p>Get discovered by NDIS and Home Care Package participants looking for support workers like you. Build trusted relationships without agencies in the middle. Work on your terms - as a sole trader or with an independent provider.</p>
                 </div>
                 <div class="benefit-item">
                     <svg class="benefit-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -367,8 +354,8 @@
                         <circle cx="13" cy="17" r="2" fill="#6ba854"/>
                         <circle cx="21" cy="7" r="2" fill="#6ba854"/>
                     </svg>
-                    <h3>Grow Your Support Work</h3>
-                    <p>Get consistent hours you need with participants who value you. No commission fees eating into your pay. Coolibah is free to use for support workers.</p>
+                    <h3>Grow Your Support Hours</h3>
+                    <p>Get the consistent hours you need with well-matched participants with no commission fees eating into your pay. Coolibah is free to use for support workers.</p>
                 </div>
             </div>
         </div>
@@ -377,13 +364,12 @@
     <!-- Final CTA Section -->
     <section class="final-cta" id="waitlist">
         <div class="container">
-            <h2>Want consistent hours with well-matched participants?</h2>
-            <p>Register your interest and be the first to know when we launch.</p>
-            <div class="form-container">
+            <h2>Join Coolibah to get consistent hours with well-matched participants.</h2>
+            <div class="form-container" style="margin-top: 48px;">
                 <!-- Step 1: Email only -->
                 <form id="step1Form" onsubmit="handleStep1(event)">
                     <input type="email" id="email" name="email" placeholder="Your email" required style="margin-bottom: 16px;">
-                    <button type="submit" class="cta-button">Continue</button>
+                    <button type="submit" class="cta-button">Join</button>
                 </form>
 
                 <!-- Step 2: Additional info -->
@@ -417,7 +403,7 @@
                         </label>
                         <label style="display: block; margin-bottom: 12px; color: #5a5a5a; line-height: 1.5; cursor: pointer;">
                             <input type="checkbox" name="interests" value="hours" style="margin-right: 8px;">
-                            Getting the hours of work you need
+                            Getting the hours of work I need regularly
                         </label>
                         <label style="display: block; margin-bottom: 12px; color: #5a5a5a; line-height: 1.5; cursor: pointer;">
                             <input type="checkbox" name="interests" value="flexibility" style="margin-right: 8px;">
@@ -425,7 +411,7 @@
                         </label>
                         <label style="display: block; margin-bottom: 12px; color: #5a5a5a; line-height: 1.5; cursor: pointer;">
                             <input type="checkbox" name="interests" value="profile" style="margin-right: 8px;">
-                            Showcasing and sharing your profile
+                            Showcasing and sharing my profile
                         </label>
                         <label style="display: block; margin-bottom: 12px; color: #5a5a5a; line-height: 1.5; cursor: pointer;">
                             <input type="checkbox" name="interests" value="other" style="margin-right: 8px;" id="other-checkbox">
@@ -441,6 +427,7 @@
                             <option value="social_media">Social media</option>
                             <option value="friend">Friend or colleague</option>
                             <option value="search">Search engine</option>
+                            <option value="university_tafe">University/Tafe</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
@@ -464,7 +451,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 Coolibah. The professional network for support workers.</p>
+            <p>&copy; 2026 Coolibah. Connecting support workers &amp; participants.</p>
         </div>
     </footer>
 
