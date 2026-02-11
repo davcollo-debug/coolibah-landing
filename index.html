@@ -411,24 +411,19 @@
         <div class="container">
             <h2>Join Coolibah to get consistent hours with well-matched participants.</h2>
             <div class="form-container" style="margin-top: 48px;">
-                <!-- Step 1: Email only -->
-                <form id="step1Form" onsubmit="handleStep1(event)">
-                    <input type="email" id="email" name="email" placeholder="Your email" required style="margin-bottom: 16px;">
-                    <button type="submit" class="cta-button">Join</button>
-                </form>
-
-                <!-- Transition message -->
-                <div id="transitionMessage" style="display: none;">
-                    <div style="background: white; padding: 40px; border-radius: 16px; border: 1px solid #e8e5e1; text-align: center;">
-                        <div style="font-size: 4rem; margin-bottom: 16px;">🎉</div>
-                        <h3 style="color: #2c2c2c; font-size: 1.75rem; margin-bottom: 16px; font-weight: 600;">Thank you for registering!</h3>
-                        <p style="color: #5a5a5a; font-size: 1.1rem; line-height: 1.6; margin-bottom: 32px;">We'll email you when Coolibah launches. Keep an eye on your inbox - we can't wait to connect you with participants who are looking for someone just like you. In the mean time it'd be great if you could answer a few quick questions to help us make Coolibah valuable to you.</p>
-                        <button class="cta-button" onclick="showSurvey()">Sure, let's go</button>
-                    </div>
+                <!-- Join button (demand signal) -->
+                <div id="joinPrompt">
+                    <button class="cta-button" onclick="handleJoinClick()">Join</button>
                 </div>
 
-                <!-- Step 2: Additional info -->
-                <form id="step2Form" onsubmit="handleStep2(event)" style="display: none;">
+                <!-- Combined form: email + survey (hidden until Join clicked) -->
+                <form id="fullForm" onsubmit="handleFormSubmit(event)" style="display: none;">
+                    <div style="background: white; padding: 32px; border-radius: 16px; border: 1px solid #e8e5e1; text-align: center; margin-bottom: 24px;">
+                        <p style="color: #5a5a5a; font-size: 1.1rem; line-height: 1.6; margin: 0;">Coolibah is still being built. We'll let you know when it's ready, but in the mean time it'd be great if you could answer a few quick questions to help us make Coolibah valuable to you.</p>
+                    </div>
+
+                    <input type="email" id="email" name="email" placeholder="Your email" required style="width: 100%; padding: 16px 20px; font-size: 1rem; border: 1px solid #d4cfc8; background: white; border-radius: 12px; margin-bottom: 16px;">
+
                     <div style="margin-bottom: 20px;">
                         <input type="text" id="name" name="name" placeholder="Your first name (optional)" style="width: 100%; padding: 16px; border: 1px solid #e8e5e1; border-radius: 12px; font-size: 1rem; margin-bottom: 16px; background: white;">
                         <input type="text" id="location" name="location" placeholder="Your location (e.g., Melbourne, Sydney)" style="width: 100%; padding: 16px; border: 1px solid #e8e5e1; border-radius: 12px; font-size: 1rem; background: white;">
@@ -494,9 +489,8 @@
                 <div id="thankYouMessage" style="display: none;">
                     <div style="background: white; padding: 40px; border-radius: 16px; border: 1px solid #e8e5e1; text-align: center;">
                         <div style="font-size: 4rem; margin-bottom: 16px;">🎉</div>
-                        <h3 style="color: #2c2c2c; font-size: 1.75rem; margin-bottom: 16px; font-weight: 600;">You're on the list!</h3>
-                        <p style="color: #5a5a5a; font-size: 1.1rem; line-height: 1.6; margin-bottom: 24px;">Thank you for registering! We'll email you when Coolibah launches.</p>
-                        <p style="color: #6a6a6a; font-size: 0.95rem;">Keep an eye on your inbox - we can't wait to connect you with participants who are looking for someone just like you.</p>
+                        <h3 style="color: #2c2c2c; font-size: 1.75rem; margin-bottom: 16px; font-weight: 600;">Thank you for registering!</h3>
+                        <p style="color: #5a5a5a; font-size: 1.1rem; line-height: 1.6;">We'll email you when Coolibah launches. Keep an eye on your inbox - we can't wait to connect you with participants who are looking for someone just like you.</p>
                     </div>
                 </div>
             </div>
@@ -512,123 +506,81 @@
 
     <script>
         function scrollToForm() {
-            gtag('event', 'cta_click', {
-                event_category: 'engagement',
-                event_label: 'hero_join_button'
+            // GA4: track join button click (demand signal)
+            gtag('event', 'funnel_join_clicked', {
+                event_category: 'signup_funnel',
+                event_label: 'demand_signal'
             });
+
             document.getElementById('waitlist').scrollIntoView({ behavior: 'smooth' });
             setTimeout(() => {
-                document.getElementById('email').focus();
+                handleJoinClick();
             }, 500);
         }
 
-        let formData = {};
-        let emailSubmitting = false;
-        let surveySubmitting = false;
+        let formSubmitting = false;
 
-        async function handleStep1(event) {
+        function handleJoinClick() {
+            // GA4: track demand signal from bottom Join button
+            gtag('event', 'funnel_join_clicked', {
+                event_category: 'signup_funnel',
+                event_label: 'demand_signal'
+            });
+
+            // Show form, hide join button
+            document.getElementById('joinPrompt').style.display = 'none';
+            document.getElementById('fullForm').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('email').focus();
+            }, 100);
+        }
+
+        async function handleFormSubmit(event) {
             event.preventDefault();
 
             // Prevent double submission
-            if (emailSubmitting) return;
-            emailSubmitting = true;
+            if (formSubmitting) return;
+            formSubmitting = true;
 
             // Show loading state
-            const btn = document.querySelector('#step1Form .cta-button');
+            const btn = document.querySelector('#fullForm .cta-button');
             btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span>Joining...';
-            
-            // Save email
-            formData.email = document.getElementById('email').value;
-            formData.timestamp = new Date().toISOString();
+            btn.innerHTML = '<span class="spinner"></span>Submitting...';
 
-            // GA4: track email submission
-            gtag('event', 'funnel_email_submitted', {
+            // Collect all form data
+            const formData = {
+                email: document.getElementById('email').value,
+                name: document.getElementById('name').value,
+                location: document.getElementById('location').value,
+                is_worker: document.querySelector('input[name="is_worker"]:checked')?.value,
+                interests: Array.from(document.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value),
+                other_text: document.getElementById('other-text').value,
+                source: document.querySelector('select[name="source"]').value,
+                timestamp: new Date().toISOString()
+            };
+
+            // GA4: track form submission
+            gtag('event', 'funnel_form_submitted', {
                 event_category: 'signup_funnel',
-                event_label: 'email_captured'
+                event_label: 'form_completed',
+                is_worker: formData.is_worker,
+                source: formData.source
             });
-            
-            // Submit email immediately
+
             try {
                 await fetch('https://script.google.com/macros/s/AKfycbyHyy9px6kKQzl61F59u5JW-LbnnoiQoEGoUaTzN5eavAE6-zQceRvGBSjemrvkdTPh/exec', {
                     method: 'POST',
                     mode: 'no-cors',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: formData.email, timestamp: formData.timestamp })
-                });
-            } catch (error) {
-                console.error('Error submitting email:', error);
-            }
-            
-            // Hide step 1, show transition message
-            document.getElementById('step1Form').style.display = 'none';
-            document.getElementById('transitionMessage').style.display = 'block';
-        }
-
-        function showSurvey() {
-            // GA4: track survey started
-            gtag('event', 'funnel_survey_started', {
-                event_category: 'signup_funnel',
-                event_label: 'survey_started'
-            });
-
-            document.getElementById('transitionMessage').style.display = 'none';
-            document.getElementById('step2Form').style.display = 'block';
-        }
-
-        async function handleStep2(event) {
-            event.preventDefault();
-
-            // Prevent double submission
-            if (surveySubmitting) return;
-            surveySubmitting = true;
-
-            // Show loading state
-            const btn = document.querySelector('#step2Form .cta-button');
-            btn.disabled = true;
-            btn.innerHTML = '<span class="spinner"></span>Submitting...';
-            
-            // Collect all additional form data
-            formData.name = document.getElementById('name').value;
-            formData.location = document.getElementById('location').value;
-            formData.is_worker = document.querySelector('input[name="is_worker"]:checked')?.value;
-            formData.interests = Array.from(document.querySelectorAll('input[name="interests"]:checked')).map(cb => cb.value);
-            formData.other_text = document.getElementById('other-text').value;
-            formData.source = document.querySelector('select[name="source"]').value;
-            
-            console.log('Submitting form data:', formData);
-            
-            try {
-                // Send data to Google Apps Script
-                const response = await fetch('https://script.google.com/macros/s/AKfycbyHyy9px6kKQzl61F59u5JW-LbnnoiQoEGoUaTzN5eavAE6-zQceRvGBSjemrvkdTPh/exec', {
-                    method: 'POST',
-                    mode: 'no-cors', // Required for Google Apps Script
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
                     body: JSON.stringify(formData)
                 });
-                
-                console.log('Form submitted successfully');
-
-                // GA4: track survey completed
-                gtag('event', 'funnel_survey_completed', {
-                    event_category: 'signup_funnel',
-                    event_label: 'survey_completed',
-                    is_worker: formData.is_worker,
-                    source: formData.source
-                });
-                
-                // Show confirmation
-                document.getElementById('step2Form').style.display = 'none';
-                document.getElementById('thankYouMessage').style.display = 'block';
-                
             } catch (error) {
                 console.error('Error submitting form:', error);
-                // Still show thank you message even if there's an error (because of no-cors mode)
-                document.getElementById('step2Form').style.display = 'none';
-                document.getElementById('thankYouMessage').style.display = 'block';
             }
+
+            // Show confirmation
+            document.getElementById('fullForm').style.display = 'none';
+            document.getElementById('thankYouMessage').style.display = 'block';
         }
     </script>
 </body>
