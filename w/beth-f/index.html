@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +44,7 @@
         .profile-hero{background:linear-gradient(135deg,rgba(78,205,196,.15) 0%,rgba(61,189,181,.1) 40%,rgba(242,153,74,.08) 100%);position:relative;overflow:hidden}
         .hero-content{position:relative;z-index:2;max-width:720px;margin:0 auto;padding:32px 24px 0}
         .avatar-row{display:flex;align-items:flex-end;gap:24px}
-        .avatar{width:120px;height:120px;border-radius:50%;border:4px solid #fff;box-shadow:0 4px 16px rgba(0,0,0,.1);background:#ddd;flex-shrink:0;object-fit:cover;object-position:center 20%}
+        .avatar{width:120px;height:120px;border-radius:50%;border:4px solid #fff;box-shadow:0 4px 16px rgba(0,0,0,.1);background:#ddd;flex-shrink:0;object-fit:cover;object-position:38% 60%}
         .identity{padding-bottom:8px}
         .profile-name{font-size:1.75rem;font-weight:600;color:#2c2c2c;line-height:1.2;letter-spacing:-.02em}
         .profile-headline{font-size:1rem;color:#5a5a5a;margin-top:2px}
@@ -69,6 +68,7 @@
         .service-tag{padding:8px 18px;background:rgba(78,205,196,.08);border:1px solid rgba(78,205,196,.2);border-radius:24px;font-size:.88rem;font-weight:500;color:#2a9d8f;transition:all .15s ease}
         .service-tag:hover{background:rgba(78,205,196,.14);transform:translateY(-1px)}
         .condition-tag{padding:6px 14px;background:rgba(242,153,74,.08);border:1px solid rgba(242,153,74,.2);border-radius:20px;font-size:.85rem;font-weight:500;color:#b07530}
+        .interest-chip{padding:6px 14px;background:#fafaf9;border:1px solid #ebe9e6;border-radius:20px;font-size:.85rem;color:#5a5a5a}
 
         .avail-row{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid #ebe9e6;font-size:.95rem}
         .avail-row:last-child{border-bottom:none}
@@ -147,7 +147,7 @@
 <section class="profile-hero">
     <div class="hero-content">
         <div class="avatar-row">
-            <img class="avatar" src="avatar.png" alt="Beth F. - Support Worker">
+            <img class="avatar" src="avatar.png?v=12" alt="Beth F. - Support Worker">
             <div class="identity">
                 <h1 class="profile-name">Beth F.</h1>
                 <div class="profile-headline">Social Worker · Psychosocial Recovery Coach · Support Worker</div>
@@ -158,6 +158,8 @@
             <span class="meta-chip verified">✓ Verified Worker</span>
             <span class="meta-chip">⏱ 10+ Years Experience</span>
             <span class="meta-chip">🎓 Bachelor of Social Work</span>
+            <span class="meta-chip">🚗 Has Car &amp; Licence</span>
+            <span class="meta-chip">🏳️‍🌈 LGBTQ+ Friendly</span>
             <span class="meta-chip">☕ Free Meet &amp; Greet</span>
         </div>
         <div class="desktop-cta-row">
@@ -177,6 +179,7 @@
             <p>I've been working in the forensic mental health sector since 2017 and providing support work since 2015 with adults, children and young people aged 2–17. I practice from a strengths-based, trauma-informed and person-centred framework, bringing both professional expertise and lived experience to connect authentically and respectfully with the people I support.</p>
             <p>I have extensive experience working with individuals living with major mental health disorders, as well as young people involved in the child safety system. As a mum of two young children, I bring warmth, patience and a nurturing approach to my work. I'm known for being reliable, flexible and creative in how I support people to achieve their goals and improve their quality of life.</p>
             <p>I'm passionate about walking alongside people as they build capacity, confidence and meaningful change.</p>
+            <p>I have lived experience of mental health conditions, which gives me a deeper understanding and empathy for the people I support. I'm also proudly LGBTQ+ friendly and committed to creating a safe, inclusive space for everyone.</p>
         </div>
     </div>
 
@@ -208,8 +211,24 @@
     <div class="card fade-up">
         <div class="card-title"><span class="icon">📅</span> Availability</div>
         <div class="avail-row">
-            <span class="avail-label">Availability</span>
-            <span class="avail-value">Contact Beth to discuss availability</span>
+            <span class="avail-label">Weekends</span>
+            <span class="avail-value">All weekend</span>
+        </div>
+        <div class="avail-row">
+            <span class="avail-label">Mon &amp; Thu</span>
+            <span class="avail-value">All day</span>
+        </div>
+        <div class="avail-row">
+            <span class="avail-label">Wednesdays</span>
+            <span class="avail-value">After 3pm</span>
+        </div>
+        <div class="avail-row">
+            <span class="avail-label">Plan Types</span>
+            <span class="avail-value">Self-managed · Plan-managed</span>
+        </div>
+        <div class="avail-row">
+            <span class="avail-label">Transport</span>
+            <span class="avail-value">Own car, full licence, baby &amp; toddler seats, insured</span>
         </div>
         <div class="avail-row">
             <span class="avail-label">Age Groups</span>
@@ -226,6 +245,18 @@
             <div class="compliance-badge"><div class="compliance-icon">✓</div><div><div class="compliance-name">First Aid &amp; CPR</div><div class="compliance-status">Current</div></div></div>
             <div class="compliance-badge"><div class="compliance-icon">✓</div><div><div class="compliance-name">ABN Registered</div><div class="compliance-status">Verified</div></div></div>
             <div class="compliance-badge"><div class="compliance-icon">✓</div><div><div class="compliance-name">Public Liability Insurance</div><div class="compliance-status">Current</div></div></div>
+        </div>
+    </div>
+
+    <div class="card fade-up">
+        <div class="card-title"><span class="icon">⭐</span> Hobbies &amp; Interests</div>
+        <div class="tag-grid">
+            <span class="interest-chip">🐕 My dog George</span>
+            <span class="interest-chip">👨‍👩‍👧‍👦 Playing with my kids</span>
+            <span class="interest-chip">🎬 Movies</span>
+            <span class="interest-chip">🎨 Art</span>
+            <span class="interest-chip">🍰 Cooking &amp; Baking</span>
+            <span class="interest-chip">📋 Organising</span>
         </div>
     </div>
 
@@ -325,7 +356,7 @@
 </div>
 
 <script>
-    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwg63HMab-w-gn061wpN2dWI71mubiAmTOKFbnGJ_OPMQMFsT59nWEI22_oXjG0Bmth/exec';
+    const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyHyy9px6kKQzl61F59u5JW-LbnnoiQoEGoUaTzN5eavAE6-zQceRvGBSjemrvkdTPh/exec';
     const WORKER_EMAIL = 'helloqws@outlook.com';
     const PROFILE_SLUG = 'beth-f';
     let currentSource = '';
